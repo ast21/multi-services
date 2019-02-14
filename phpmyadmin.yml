@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      - PMA_HOSTS=${PMA_HOSTS}
+      - PMA_USER=root
+      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#      - PMA_ARBITRARY=1
+    volumes:
+      - /sessions
+    restart: always
+    ports:
+      - 8080:80

@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+
+  mysql80:
+    image: mysql:8.0
+    container_name: mysql80
+    volumes:
+        - ./mysql80:/var/lib/mysql
+    environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
